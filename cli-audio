@@ -4,11 +4,18 @@ from front.FrontEnd import FrontEnd
 from player.Player import Player
 from curses import wrapper
 from library.Lib import Lib
+from exception.exception import CLI_Audio_File_Exception, CLI_Audio_Screen_Size_Exception
 
 def main():
-    player = Player()
-    lib = Lib()
-    front_end = FrontEnd(player, lib)
+    try:
+        player = Player()
+        lib = Lib()
+        front_end = FrontEnd(player, lib)
+    
+    except CLI_Audio_File_Exception:
+        print ("File not found")
+    except CLI_Audio_Screen_Size_Exception:
+        print ("Screen too small")
 
 if __name__ == "__main__":
     main()
